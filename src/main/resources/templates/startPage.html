@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card blue-grey blue lighten-5">
+                <div class="card-content grey-text text-darken-4">
+                    <div class="row">
+                        <div class="col s6 m6 left-align"><span class="card-title"><a href="/"
+                                                                                      class="waves-effect waves-light btn"><p
+                                th:text="${userInfo.name}"></p></a></span></div>
+                        <div class="col s6 m6 right-align">
+                            <form action="/logout" method="post">
+                                <button type="submit" class="waves-effect waves-light btn">Выход</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <table class="grey lighten-5 bordered centered">
+                        <thead>
+                        <tr>
+                            <th class="grey lighten-1">Последние данные</th>
+                            <th class="grey lighten-1">Удалить</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:if="${not #lists.isEmpty(user)}">
+                            <tr th:each="s : ${user}">
+                                <td th:text="${#dates.format(s.trandatetime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td>
+                                    <form action="/del" method="post">
+                                        <input type="hidden" name="delidtran" th:attr="value=${s.ID_TRAN}"/>
+                                        <button value="Submit" class="waves-effect waves-light btn-floating btn pulse">
+                                            <i class="material-icons">remove</i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+
+
+                    <table class="centered">
+                        <tr>
+                            <td>
+                                <form action="/" method="post">
+                                    <input type="hidden" name="id" value="1"/>
+                                    <div class="input-field inline"
+                                         style="margin-top: -20px; margin-bottom: -40px; margin-left: 0px">
+                                        <input type="text" class="datepicker" placeholder="Выбрать дату" name="dated"
+                                               style="text-align: center">
+                                        <input type="text" class="timepicker" placeholder="Выбрать время" name="datep"
+                                               style="text-align: center">
+                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button value="Submit" class="waves-effect waves-light btn-floating btn pulse"><i
+                                        class="material-icons">add</i></button>
+                                </form></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  ------------ -->
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+            selectYears: 16, // Creates a dropdown of 15 years to control year
+            firstDay: 1,
+            autoClose: true
+        };
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, options);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+            defaultTime: 'now', // Set default time: 'now', '1:30AM', '16:30'
+            twelveHour: false, // Use AM/PM or 24-hour format
+            autoClose: true
+        };
+        var elems = document.querySelectorAll('.timepicker');
+        var instances = M.Timepicker.init(elems, options);
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
