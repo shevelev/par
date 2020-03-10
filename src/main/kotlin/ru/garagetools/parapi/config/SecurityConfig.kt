@@ -1,4 +1,4 @@
-package com.example.parapi.security
+package ru.garagetools.parapi.config
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
@@ -12,9 +12,10 @@ class SecurityConfig  : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) : Unit {
         http.csrf().disable()
         http.authorizeRequests()
-                .antMatchers("/","/2").hasRole("USER").anyRequest().authenticated()
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/").hasRole("USER").anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll()
+                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().permitAll()
     }

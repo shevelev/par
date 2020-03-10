@@ -1,4 +1,4 @@
-package com.example.parapi
+package ru.garagetools.parapi
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

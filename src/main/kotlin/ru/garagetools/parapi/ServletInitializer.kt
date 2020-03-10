@@ -1,4 +1,4 @@
-package com.example.parapi
+package ru.garagetools.parapi
 
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer

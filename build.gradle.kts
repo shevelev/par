@@ -10,8 +10,8 @@ plugins {
 }
 
 
-group = "com.example"
-version = "0.0.1-SNAPSHOT"
+group = "ru.garagetools"
+version = "0.0.3"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 val developmentOnly by configurations.creating
