@@ -51,8 +51,9 @@ class ApiController(private val repa: UserRepository) {
     }
 
     @DeleteMapping("/users/id/{id}")
-    fun deleteTransLog(@PathVariable id: Int) {
+    fun deleteTransLog(@PathVariable id: Int): Int {
         repa.delById(id)
+        return 1
     }
 
     @GetMapping("/user/{name}/7")
