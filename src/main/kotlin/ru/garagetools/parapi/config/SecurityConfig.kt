@@ -11,13 +11,20 @@ class SecurityConfig  : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) : Unit {
         http.csrf().disable()
+
         http.authorizeRequests()
-                .antMatchers("/api/**").permitAll()
+                .antMatchers("/api/**").hasRole("API")
+                .and().httpBasic()
+
+        http.authorizeRequests()
+                //.antMatchers("/api/**").permitAll()
                 .antMatchers("/").hasRole("USER").anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().permitAll()
+
+
     }
     @Autowired
     fun configureGlobal(auth: AuthenticationManagerBuilder): Unit {
@@ -31,6 +38,8 @@ class SecurityConfig  : WebSecurityConfigurerAdapter() {
         auth.inMemoryAuthentication().withUser("ad").password("{noop}1").roles("USER");
         auth.inMemoryAuthentication().withUser("ra").password("{noop}1").roles("USER");
         auth.inMemoryAuthentication().withUser("kp").password("{noop}1").roles("USER");
+        auth.inMemoryAuthentication().withUser("kr").password("{noop}1").roles("USER");
         auth.inMemoryAuthentication().withUser("ku").password("{noop}1").roles("USER");
+        auth.inMemoryAuthentication().withUser("api").password("{noop}testpass").roles("API");
     }
 }

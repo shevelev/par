@@ -12,7 +12,7 @@ fun getCurrentTimeStamp(): Date {
 fun listUser(): List<User> {
     val res: List<User> = listOf(
             User(nick = "s", name = "Шевелев Сергей", code = "green_231 $0025E3B2 g.  ."),
-            User(nick = "d", name = "Осипов Денис", code = "Осипов $002BF590 Д.  ."),
+            User(nick = "d", name = "Осипов Денис", code = "green_777 $006BA878 g.  ."),
             User(nick = "v", name = "Андриянов Виталий", code = "green_204 $0026826E 2. 2."),
             User(nick = "e", name = "Тимофеева Екатерина", code = "green_174 $002C0C7E g.  ."),
             User(nick = "gv", name = "Горбунов Владимир", code = "green_242 $00913AC5 g.  ."),
