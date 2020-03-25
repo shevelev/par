@@ -15,6 +15,6 @@ interface UserRepository : CrudRepository<TransLog, Long> {
 
     @Transactional
     @Modifying
-    @Query("delete from TransLog p where p.ID_TRAN = :id")
-    fun delById(@Param("id") id: Int)
+    @Query("delete from TransLog p where p.ID_TRAN = :id and p.tranuser = :name")
+    fun delById(@Param("name") name: String, @Param("id") id: Int)
 }

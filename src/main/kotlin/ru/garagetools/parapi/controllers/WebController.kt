@@ -66,7 +66,7 @@ class WebController(private val repository: UserRepository) {
 
         val user: User = getUser(SecurityContextHolder.getContext().authentication.name)
 
-        repository.delById(delidtran.toInt())
+        repository.delById(user.code, delidtran.toInt())
         model["delete"] = "Событие удалено"
         model["insert"] = true
         model["user"] = repository.findTop7ByTranuserOrderByTrandatetimeDesc(user.code)

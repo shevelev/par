@@ -50,9 +50,9 @@ class ApiController(private val repa: UserRepository) {
         return repa.findTop1ByTranuserOrderByTrandatetimeDesc(getUser(bd.nick).code)
     }
 
-    @DeleteMapping("/users/id/{id}")
-    fun deleteTransLog(@PathVariable id: Int): Int {
-        repa.delById(id)
+    @DeleteMapping("/users/{name}/{id}")
+    fun deleteTransLog(@PathVariable name: String, @PathVariable id: Int): Int {
+        repa.delById(getUser(name).code,id)
         return 1
     }
 

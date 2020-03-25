@@ -40,6 +40,6 @@ class SecurityConfig  : WebSecurityConfigurerAdapter() {
         auth.inMemoryAuthentication().withUser("kp").password("{noop}1").roles("USER");
         auth.inMemoryAuthentication().withUser("kr").password("{noop}1").roles("USER");
         auth.inMemoryAuthentication().withUser("ku").password("{noop}1").roles("USER");
-        auth.inMemoryAuthentication().withUser("api").password("{noop}testpass").roles("API");
+        auth.inMemoryAuthentication().withUser("api").password("{noop}@%TG5h").roles("API");
     }
 }
